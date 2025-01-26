@@ -1,0 +1,248 @@
+2025-01-26 09:21:07,424 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-01-26 09:21:07,425 - INFO - [33mPress CTRL+C to quit[0m
+2025-01-26 09:21:07,427 - INFO -  * Restarting with stat
+2025-01-26 09:21:08,187 - WARNING -  * Debugger is active!
+2025-01-26 09:21:08,190 - INFO -  * Debugger PIN: 137-232-298
+2025-01-26 09:21:10,569 - INFO - 127.0.0.1 - - [26/Jan/2025 09:21:10] "GET /books HTTP/1.1" 200 -
+2025-01-26 09:21:18,544 - INFO - 127.0.0.1 - - [26/Jan/2025 09:21:18] "GET /customers HTTP/1.1" 200 -
+2025-01-26 09:21:24,373 - INFO - 127.0.0.1 - - [26/Jan/2025 09:21:24] "GET /loans/only_active HTTP/1.1" 200 -
+2025-01-26 09:21:27,155 - INFO - 127.0.0.1 - - [26/Jan/2025 09:21:27] "GET /books HTTP/1.1" 200 -
+2025-01-26 09:21:34,693 - INFO - 127.0.0.1 - - [26/Jan/2025 09:21:34] "GET /books/4 HTTP/1.1" 200 -
+2025-01-26 09:21:41,199 - INFO - 127.0.0.1 - - [26/Jan/2025 09:21:41] "OPTIONS /books/4 HTTP/1.1" 200 -
+2025-01-26 09:21:41,221 - INFO - 127.0.0.1 - - [26/Jan/2025 09:21:41] "PUT /books/4 HTTP/1.1" 200 -
+2025-01-26 09:21:41,431 - INFO - 127.0.0.1 - - [26/Jan/2025 09:21:41] "GET /books/4 HTTP/1.1" 200 -
+2025-01-26 09:21:41,707 - INFO - 127.0.0.1 - - [26/Jan/2025 09:21:41] "GET /books/4 HTTP/1.1" 200 -
+2025-01-26 09:21:42,129 - INFO - 127.0.0.1 - - [26/Jan/2025 09:21:42] "GET /books/4 HTTP/1.1" 200 -
+2025-01-26 09:21:42,529 - INFO - 127.0.0.1 - - [26/Jan/2025 09:21:42] "GET /books/4 HTTP/1.1" 200 -
+2025-01-26 09:21:42,914 - INFO - 127.0.0.1 - - [26/Jan/2025 09:21:42] "GET /books/4 HTTP/1.1" 200 -
+2025-01-26 09:21:43,334 - INFO - 127.0.0.1 - - [26/Jan/2025 09:21:43] "GET /books/4 HTTP/1.1" 200 -
+2025-01-26 09:21:43,728 - INFO - 127.0.0.1 - - [26/Jan/2025 09:21:43] "GET /books/4 HTTP/1.1" 200 -
+2025-01-26 09:21:44,131 - INFO - 127.0.0.1 - - [26/Jan/2025 09:21:44] "GET /books/4 HTTP/1.1" 200 -
+2025-01-26 09:21:44,566 - INFO - 127.0.0.1 - - [26/Jan/2025 09:21:44] "GET /books/4 HTTP/1.1" 200 -
+2025-01-26 09:21:44,959 - INFO - 127.0.0.1 - - [26/Jan/2025 09:21:44] "GET /books/4 HTTP/1.1" 200 -
+2025-01-26 09:21:45,386 - INFO - 127.0.0.1 - - [26/Jan/2025 09:21:45] "GET /books/4 HTTP/1.1" 200 -
+2025-01-26 09:21:45,778 - INFO - 127.0.0.1 - - [26/Jan/2025 09:21:45] "GET /books/4 HTTP/1.1" 200 -
+2025-01-26 09:21:51,325 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-01-26 09:21:51,327 - INFO - [33mPress CTRL+C to quit[0m
+2025-01-26 09:21:51,329 - INFO -  * Restarting with stat
+2025-01-26 09:21:52,121 - WARNING -  * Debugger is active!
+2025-01-26 09:21:52,125 - INFO -  * Debugger PIN: 137-232-298
+2025-01-26 09:21:53,374 - INFO - 127.0.0.1 - - [26/Jan/2025 09:21:53] "GET /books HTTP/1.1" 200 -
+2025-01-26 09:21:56,309 - INFO - 127.0.0.1 - - [26/Jan/2025 09:21:56] "GET /books/4 HTTP/1.1" 200 -
+2025-01-26 09:22:00,180 - INFO - 127.0.0.1 - - [26/Jan/2025 09:22:00] "OPTIONS /books/4 HTTP/1.1" 200 -
+2025-01-26 09:22:00,200 - INFO - 127.0.0.1 - - [26/Jan/2025 09:22:00] "PUT /books/4 HTTP/1.1" 200 -
+2025-01-26 09:22:00,401 - INFO - 127.0.0.1 - - [26/Jan/2025 09:22:00] "GET /books/4 HTTP/1.1" 200 -
+2025-01-26 09:22:00,690 - INFO - 127.0.0.1 - - [26/Jan/2025 09:22:00] "GET /books/4 HTTP/1.1" 200 -
+2025-01-26 09:22:01,093 - INFO - 127.0.0.1 - - [26/Jan/2025 09:22:01] "GET /books/4 HTTP/1.1" 200 -
+2025-01-26 09:22:01,523 - INFO - 127.0.0.1 - - [26/Jan/2025 09:22:01] "GET /books/4 HTTP/1.1" 200 -
+2025-01-26 09:22:01,939 - INFO - 127.0.0.1 - - [26/Jan/2025 09:22:01] "GET /books/4 HTTP/1.1" 200 -
+2025-01-26 09:22:02,312 - INFO - 127.0.0.1 - - [26/Jan/2025 09:22:02] "GET /books/4 HTTP/1.1" 200 -
+2025-01-26 09:22:02,750 - INFO - 127.0.0.1 - - [26/Jan/2025 09:22:02] "GET /books/4 HTTP/1.1" 200 -
+2025-01-26 09:22:10,812 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-01-26 09:22:10,813 - INFO - [33mPress CTRL+C to quit[0m
+2025-01-26 09:22:10,815 - INFO -  * Restarting with stat
+2025-01-26 09:22:11,501 - WARNING -  * Debugger is active!
+2025-01-26 09:22:11,504 - INFO -  * Debugger PIN: 137-232-298
+2025-01-26 09:22:16,267 - INFO - 127.0.0.1 - - [26/Jan/2025 09:22:16] "GET /books HTTP/1.1" 200 -
+2025-01-26 09:22:21,937 - INFO - 127.0.0.1 - - [26/Jan/2025 09:22:21] "OPTIONS /books/4 HTTP/1.1" 200 -
+2025-01-26 09:22:21,960 - INFO - 127.0.0.1 - - [26/Jan/2025 09:22:21] "PATCH /books/4 HTTP/1.1" 200 -
+2025-01-26 09:22:21,973 - INFO - 127.0.0.1 - - [26/Jan/2025 09:22:21] "GET /books HTTP/1.1" 200 -
+2025-01-26 09:22:22,188 - INFO - 127.0.0.1 - - [26/Jan/2025 09:22:22] "GET /books HTTP/1.1" 200 -
+2025-01-26 09:22:22,468 - INFO - 127.0.0.1 - - [26/Jan/2025 09:22:22] "GET /books HTTP/1.1" 200 -
+2025-01-26 09:22:22,925 - INFO - 127.0.0.1 - - [26/Jan/2025 09:22:22] "GET /books HTTP/1.1" 200 -
+2025-01-26 09:22:23,276 - INFO - 127.0.0.1 - - [26/Jan/2025 09:22:23] "GET /books HTTP/1.1" 200 -
+2025-01-26 09:22:23,658 - INFO - 127.0.0.1 - - [26/Jan/2025 09:22:23] "GET /books HTTP/1.1" 200 -
+2025-01-26 09:22:24,104 - INFO - 127.0.0.1 - - [26/Jan/2025 09:22:24] "GET /books HTTP/1.1" 200 -
+2025-01-26 09:22:24,476 - INFO - 127.0.0.1 - - [26/Jan/2025 09:22:24] "GET /books HTTP/1.1" 200 -
+2025-01-26 09:22:24,922 - INFO - 127.0.0.1 - - [26/Jan/2025 09:22:24] "GET /books HTTP/1.1" 200 -
+2025-01-26 09:22:25,291 - INFO - 127.0.0.1 - - [26/Jan/2025 09:22:25] "GET /books HTTP/1.1" 200 -
+2025-01-26 09:22:28,072 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-01-26 09:22:28,072 - INFO - [33mPress CTRL+C to quit[0m
+2025-01-26 09:22:28,075 - INFO -  * Restarting with stat
+2025-01-26 09:22:28,854 - WARNING -  * Debugger is active!
+2025-01-26 09:22:28,857 - INFO -  * Debugger PIN: 137-232-298
+2025-01-26 09:22:30,229 - INFO - 127.0.0.1 - - [26/Jan/2025 09:22:30] "GET /books HTTP/1.1" 200 -
+2025-01-26 09:22:53,450 - INFO - 127.0.0.1 - - [26/Jan/2025 09:22:53] "GET /books HTTP/1.1" 200 -
+2025-01-26 09:22:53,849 - INFO - 127.0.0.1 - - [26/Jan/2025 09:22:53] "GET /books HTTP/1.1" 200 -
+2025-01-26 09:22:54,207 - INFO - 127.0.0.1 - - [26/Jan/2025 09:22:54] "GET /books HTTP/1.1" 200 -
+2025-01-26 09:22:54,608 - INFO - 127.0.0.1 - - [26/Jan/2025 09:22:54] "GET /books HTTP/1.1" 200 -
+2025-01-26 09:22:55,022 - INFO - 127.0.0.1 - - [26/Jan/2025 09:22:55] "GET /books HTTP/1.1" 200 -
+2025-01-26 09:22:55,407 - INFO - 127.0.0.1 - - [26/Jan/2025 09:22:55] "GET /books HTTP/1.1" 200 -
+2025-01-26 09:22:55,821 - INFO - 127.0.0.1 - - [26/Jan/2025 09:22:55] "GET /books HTTP/1.1" 200 -
+2025-01-26 09:22:56,248 - INFO - 127.0.0.1 - - [26/Jan/2025 09:22:56] "GET /books HTTP/1.1" 200 -
+2025-01-26 09:22:56,644 - INFO - 127.0.0.1 - - [26/Jan/2025 09:22:56] "GET /books HTTP/1.1" 200 -
+2025-01-26 09:22:57,030 - INFO - 127.0.0.1 - - [26/Jan/2025 09:22:57] "GET /books HTTP/1.1" 200 -
+2025-01-26 09:22:57,433 - INFO - 127.0.0.1 - - [26/Jan/2025 09:22:57] "GET /books HTTP/1.1" 200 -
+2025-01-26 09:22:57,828 - INFO - 127.0.0.1 - - [26/Jan/2025 09:22:57] "GET /books HTTP/1.1" 200 -
+2025-01-26 09:22:58,245 - INFO - 127.0.0.1 - - [26/Jan/2025 09:22:58] "GET /books HTTP/1.1" 200 -
+2025-01-26 09:22:58,657 - INFO - 127.0.0.1 - - [26/Jan/2025 09:22:58] "GET /books HTTP/1.1" 200 -
+2025-01-26 09:22:59,046 - INFO - 127.0.0.1 - - [26/Jan/2025 09:22:59] "GET /books HTTP/1.1" 200 -
+2025-01-26 09:22:59,470 - INFO - 127.0.0.1 - - [26/Jan/2025 09:22:59] "GET /books HTTP/1.1" 200 -
+2025-01-26 09:22:59,917 - INFO - 127.0.0.1 - - [26/Jan/2025 09:22:59] "GET /books HTTP/1.1" 200 -
+2025-01-26 09:23:00,279 - INFO - 127.0.0.1 - - [26/Jan/2025 09:23:00] "GET /books HTTP/1.1" 200 -
+2025-01-26 09:23:00,663 - INFO - 127.0.0.1 - - [26/Jan/2025 09:23:00] "GET /books HTTP/1.1" 200 -
+2025-01-26 09:23:01,073 - INFO - 127.0.0.1 - - [26/Jan/2025 09:23:01] "GET /books HTTP/1.1" 200 -
+2025-01-26 09:23:01,465 - INFO - 127.0.0.1 - - [26/Jan/2025 09:23:01] "GET /books HTTP/1.1" 200 -
+2025-01-26 09:23:15,704 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-01-26 09:23:15,705 - INFO - [33mPress CTRL+C to quit[0m
+2025-01-26 09:23:15,707 - INFO -  * Restarting with stat
+2025-01-26 09:23:16,535 - WARNING -  * Debugger is active!
+2025-01-26 09:23:16,542 - INFO -  * Debugger PIN: 137-232-298
+2025-01-26 09:23:19,418 - INFO - 127.0.0.1 - - [26/Jan/2025 09:23:19] "GET /books HTTP/1.1" 200 -
+2025-01-26 09:24:31,133 - INFO - 127.0.0.1 - - [26/Jan/2025 09:24:31] "OPTIONS /books HTTP/1.1" 200 -
+2025-01-26 09:24:31,148 - INFO - 127.0.0.1 - - [26/Jan/2025 09:24:31] "[35m[1mPOST /books HTTP/1.1[0m" 201 -
+2025-01-26 09:24:41,920 - INFO - 127.0.0.1 - - [26/Jan/2025 09:24:41] "GET /books HTTP/1.1" 200 -
+2025-01-26 09:24:48,946 - INFO - 127.0.0.1 - - [26/Jan/2025 09:24:48] "GET /books HTTP/1.1" 200 -
+2025-01-26 09:24:49,289 - INFO - 127.0.0.1 - - [26/Jan/2025 09:24:49] "GET /books HTTP/1.1" 200 -
+2025-01-26 09:24:49,685 - INFO - 127.0.0.1 - - [26/Jan/2025 09:24:49] "GET /books HTTP/1.1" 200 -
+2025-01-26 09:24:50,094 - INFO - 127.0.0.1 - - [26/Jan/2025 09:24:50] "GET /books HTTP/1.1" 200 -
+2025-01-26 09:24:50,497 - INFO - 127.0.0.1 - - [26/Jan/2025 09:24:50] "GET /books HTTP/1.1" 200 -
+2025-01-26 09:25:31,329 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-01-26 09:25:31,330 - INFO - [33mPress CTRL+C to quit[0m
+2025-01-26 09:25:31,332 - INFO -  * Restarting with stat
+2025-01-26 09:25:32,052 - WARNING -  * Debugger is active!
+2025-01-26 09:25:32,055 - INFO -  * Debugger PIN: 137-232-298
+2025-01-26 09:25:37,730 - INFO - 127.0.0.1 - - [26/Jan/2025 09:25:37] "GET /books HTTP/1.1" 200 -
+2025-01-26 09:25:52,434 - INFO - 127.0.0.1 - - [26/Jan/2025 09:25:52] "OPTIONS /books HTTP/1.1" 200 -
+2025-01-26 09:25:52,459 - INFO - 127.0.0.1 - - [26/Jan/2025 09:25:52] "[35m[1mPOST /books HTTP/1.1[0m" 201 -
+2025-01-26 09:26:03,411 - INFO - 127.0.0.1 - - [26/Jan/2025 09:26:03] "GET /books HTTP/1.1" 200 -
+2025-01-26 09:26:07,122 - INFO - 127.0.0.1 - - [26/Jan/2025 09:26:07] "OPTIONS /books/6 HTTP/1.1" 200 -
+2025-01-26 09:26:07,141 - INFO - 127.0.0.1 - - [26/Jan/2025 09:26:07] "PATCH /books/6 HTTP/1.1" 200 -
+2025-01-26 09:26:07,153 - INFO - 127.0.0.1 - - [26/Jan/2025 09:26:07] "GET /books HTTP/1.1" 200 -
+2025-01-26 09:26:07,390 - INFO - 127.0.0.1 - - [26/Jan/2025 09:26:07] "GET /books HTTP/1.1" 200 -
+2025-01-26 09:26:07,717 - INFO - 127.0.0.1 - - [26/Jan/2025 09:26:07] "GET /books HTTP/1.1" 200 -
+2025-01-26 09:26:08,102 - INFO - 127.0.0.1 - - [26/Jan/2025 09:26:08] "GET /books HTTP/1.1" 200 -
+2025-01-26 09:26:08,530 - INFO - 127.0.0.1 - - [26/Jan/2025 09:26:08] "GET /books HTTP/1.1" 200 -
+2025-01-26 09:26:08,895 - INFO - 127.0.0.1 - - [26/Jan/2025 09:26:08] "GET /books HTTP/1.1" 200 -
+2025-01-26 09:26:09,283 - INFO - 127.0.0.1 - - [26/Jan/2025 09:26:09] "GET /books HTTP/1.1" 200 -
+2025-01-26 09:26:09,452 - INFO - 127.0.0.1 - - [26/Jan/2025 09:26:09] "GET /books HTTP/1.1" 200 -
+2025-01-26 09:29:07,645 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-01-26 09:29:07,647 - INFO - [33mPress CTRL+C to quit[0m
+2025-01-26 09:29:07,651 - INFO -  * Restarting with stat
+2025-01-26 09:29:08,637 - WARNING -  * Debugger is active!
+2025-01-26 09:29:08,640 - INFO -  * Debugger PIN: 137-232-298
+2025-01-26 09:29:15,229 - INFO - 127.0.0.1 - - [26/Jan/2025 09:29:15] "GET /books HTTP/1.1" 200 -
+2025-01-26 09:29:15,640 - INFO - 127.0.0.1 - - [26/Jan/2025 09:29:15] "GET /books HTTP/1.1" 200 -
+2025-01-26 09:29:16,060 - INFO - 127.0.0.1 - - [26/Jan/2025 09:29:16] "GET /books HTTP/1.1" 200 -
+2025-01-26 09:29:16,459 - INFO - 127.0.0.1 - - [26/Jan/2025 09:29:16] "GET /books HTTP/1.1" 200 -
+2025-01-26 09:29:16,798 - INFO - 127.0.0.1 - - [26/Jan/2025 09:29:16] "GET /books HTTP/1.1" 200 -
+2025-01-26 09:29:17,213 - INFO - 127.0.0.1 - - [26/Jan/2025 09:29:17] "GET /books HTTP/1.1" 200 -
+2025-01-26 09:29:17,648 - INFO - 127.0.0.1 - - [26/Jan/2025 09:29:17] "GET /books HTTP/1.1" 200 -
+2025-01-26 09:29:21,997 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-01-26 09:29:21,998 - INFO - [33mPress CTRL+C to quit[0m
+2025-01-26 09:29:22,000 - INFO -  * Restarting with stat
+2025-01-26 09:29:22,832 - WARNING -  * Debugger is active!
+2025-01-26 09:29:22,835 - INFO -  * Debugger PIN: 137-232-298
+2025-01-26 09:29:25,097 - INFO - 127.0.0.1 - - [26/Jan/2025 09:29:25] "GET /customers HTTP/1.1" 200 -
+2025-01-26 09:29:29,927 - INFO - 127.0.0.1 - - [26/Jan/2025 09:29:29] "GET /customers/name/Jane%20Doe HTTP/1.1" 200 -
+2025-01-26 09:30:27,184 - INFO - 127.0.0.1 - - [26/Jan/2025 09:30:27] "OPTIONS /customers HTTP/1.1" 200 -
+2025-01-26 09:30:27,214 - INFO - 127.0.0.1 - - [26/Jan/2025 09:30:27] "[35m[1mPOST /customers HTTP/1.1[0m" 201 -
+2025-01-26 09:30:33,482 - INFO - 127.0.0.1 - - [26/Jan/2025 09:30:33] "GET /customers HTTP/1.1" 200 -
+2025-01-26 09:30:35,792 - INFO - 127.0.0.1 - - [26/Jan/2025 09:30:35] "GET /customers HTTP/1.1" 200 -
+2025-01-26 09:30:39,320 - INFO - 127.0.0.1 - - [26/Jan/2025 09:30:39] "GET /customers HTTP/1.1" 200 -
+2025-01-26 09:30:43,033 - INFO - 127.0.0.1 - - [26/Jan/2025 09:30:43] "GET /customers/4 HTTP/1.1" 200 -
+2025-01-26 09:30:46,414 - INFO - 127.0.0.1 - - [26/Jan/2025 09:30:46] "OPTIONS /customers/update/id/4 HTTP/1.1" 200 -
+2025-01-26 09:30:46,435 - INFO - 127.0.0.1 - - [26/Jan/2025 09:30:46] "PUT /customers/update/id/4 HTTP/1.1" 200 -
+2025-01-26 09:30:46,640 - INFO - 127.0.0.1 - - [26/Jan/2025 09:30:46] "GET /customers/4 HTTP/1.1" 200 -
+2025-01-26 09:30:46,931 - INFO - 127.0.0.1 - - [26/Jan/2025 09:30:46] "GET /customers/4 HTTP/1.1" 200 -
+2025-01-26 09:30:47,348 - INFO - 127.0.0.1 - - [26/Jan/2025 09:30:47] "GET /customers/4 HTTP/1.1" 200 -
+2025-01-26 09:30:47,745 - INFO - 127.0.0.1 - - [26/Jan/2025 09:30:47] "GET /customers/4 HTTP/1.1" 200 -
+2025-01-26 09:30:48,152 - INFO - 127.0.0.1 - - [26/Jan/2025 09:30:48] "GET /customers/4 HTTP/1.1" 200 -
+2025-01-26 09:30:48,585 - INFO - 127.0.0.1 - - [26/Jan/2025 09:30:48] "GET /customers/4 HTTP/1.1" 200 -
+2025-01-26 09:30:48,938 - INFO - 127.0.0.1 - - [26/Jan/2025 09:30:48] "GET /customers/4 HTTP/1.1" 200 -
+2025-01-26 09:30:49,354 - INFO - 127.0.0.1 - - [26/Jan/2025 09:30:49] "GET /customers/4 HTTP/1.1" 200 -
+2025-01-26 09:30:49,756 - INFO - 127.0.0.1 - - [26/Jan/2025 09:30:49] "GET /customers/4 HTTP/1.1" 200 -
+2025-01-26 09:30:50,140 - INFO - 127.0.0.1 - - [26/Jan/2025 09:30:50] "GET /customers HTTP/1.1" 200 -
+2025-01-26 09:30:50,571 - INFO - 127.0.0.1 - - [26/Jan/2025 09:30:50] "GET /customers HTTP/1.1" 200 -
+2025-01-26 09:30:50,973 - INFO - 127.0.0.1 - - [26/Jan/2025 09:30:50] "GET /customers HTTP/1.1" 200 -
+2025-01-26 09:30:51,450 - INFO - 127.0.0.1 - - [26/Jan/2025 09:30:51] "GET /customers HTTP/1.1" 200 -
+2025-01-26 09:30:51,781 - INFO - 127.0.0.1 - - [26/Jan/2025 09:30:51] "GET /customers HTTP/1.1" 200 -
+2025-01-26 09:30:52,301 - INFO - 127.0.0.1 - - [26/Jan/2025 09:30:52] "GET /customers HTTP/1.1" 200 -
+2025-01-26 09:30:54,305 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-01-26 09:30:54,306 - INFO - [33mPress CTRL+C to quit[0m
+2025-01-26 09:30:54,308 - INFO -  * Restarting with stat
+2025-01-26 09:30:55,287 - WARNING -  * Debugger is active!
+2025-01-26 09:30:55,291 - INFO -  * Debugger PIN: 137-232-298
+2025-01-26 09:30:57,566 - INFO - 127.0.0.1 - - [26/Jan/2025 09:30:57] "GET /customers HTTP/1.1" 200 -
+2025-01-26 09:31:02,157 - INFO - 127.0.0.1 - - [26/Jan/2025 09:31:02] "OPTIONS /customers/4 HTTP/1.1" 200 -
+2025-01-26 09:31:02,192 - INFO - 127.0.0.1 - - [26/Jan/2025 09:31:02] "PATCH /customers/4 HTTP/1.1" 200 -
+2025-01-26 09:31:02,400 - INFO - 127.0.0.1 - - [26/Jan/2025 09:31:02] "GET /customers HTTP/1.1" 200 -
+2025-01-26 09:31:02,698 - INFO - 127.0.0.1 - - [26/Jan/2025 09:31:02] "GET /customers HTTP/1.1" 200 -
+2025-01-26 09:31:03,103 - INFO - 127.0.0.1 - - [26/Jan/2025 09:31:03] "GET /customers HTTP/1.1" 200 -
+2025-01-26 09:31:03,531 - INFO - 127.0.0.1 - - [26/Jan/2025 09:31:03] "GET /customers HTTP/1.1" 200 -
+2025-01-26 09:31:03,911 - INFO - 127.0.0.1 - - [26/Jan/2025 09:31:03] "GET /customers HTTP/1.1" 200 -
+2025-01-26 09:31:06,092 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-01-26 09:31:06,092 - INFO - [33mPress CTRL+C to quit[0m
+2025-01-26 09:31:06,095 - INFO -  * Restarting with stat
+2025-01-26 09:31:07,000 - WARNING -  * Debugger is active!
+2025-01-26 09:31:07,003 - INFO -  * Debugger PIN: 137-232-298
+2025-01-26 09:31:09,745 - INFO - 127.0.0.1 - - [26/Jan/2025 09:31:09] "GET /customers HTTP/1.1" 200 -
+2025-01-26 09:31:12,730 - INFO - 127.0.0.1 - - [26/Jan/2025 09:31:12] "GET /customers HTTP/1.1" 200 -
+2025-01-26 09:31:13,088 - INFO - 127.0.0.1 - - [26/Jan/2025 09:31:13] "GET /customers HTTP/1.1" 200 -
+2025-01-26 09:31:13,526 - INFO - 127.0.0.1 - - [26/Jan/2025 09:31:13] "GET /customers HTTP/1.1" 200 -
+2025-01-26 09:31:13,913 - INFO - 127.0.0.1 - - [26/Jan/2025 09:31:13] "GET /customers HTTP/1.1" 200 -
+2025-01-26 09:31:14,281 - INFO - 127.0.0.1 - - [26/Jan/2025 09:31:14] "GET /customers HTTP/1.1" 200 -
+2025-01-26 09:31:14,693 - INFO - 127.0.0.1 - - [26/Jan/2025 09:31:14] "GET /customers HTTP/1.1" 200 -
+2025-01-26 09:31:15,114 - INFO - 127.0.0.1 - - [26/Jan/2025 09:31:15] "GET /customers HTTP/1.1" 200 -
+2025-01-26 09:31:17,096 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-01-26 09:31:17,097 - INFO - [33mPress CTRL+C to quit[0m
+2025-01-26 09:31:17,099 - INFO -  * Restarting with stat
+2025-01-26 09:31:17,862 - WARNING -  * Debugger is active!
+2025-01-26 09:31:17,865 - INFO -  * Debugger PIN: 137-232-298
+2025-01-26 09:31:19,307 - INFO - 127.0.0.1 - - [26/Jan/2025 09:31:19] "GET /customers HTTP/1.1" 200 -
+2025-01-26 09:31:22,721 - INFO - 127.0.0.1 - - [26/Jan/2025 09:31:22] "GET /customers/email/ACE@example.com HTTP/1.1" 200 -
+2025-01-26 09:31:26,218 - INFO - 127.0.0.1 - - [26/Jan/2025 09:31:26] "GET /loans/only_active HTTP/1.1" 200 -
+2025-01-26 09:31:28,084 - INFO - 127.0.0.1 - - [26/Jan/2025 09:31:28] "GET /loans HTTP/1.1" 200 -
+2025-01-26 09:31:29,524 - INFO - 127.0.0.1 - - [26/Jan/2025 09:31:29] "GET /loans/only_active HTTP/1.1" 200 -
+2025-01-26 09:31:35,683 - INFO - 127.0.0.1 - - [26/Jan/2025 09:31:35] "GET /loans/overdue HTTP/1.1" 200 -
+2025-01-26 09:31:36,844 - INFO - 127.0.0.1 - - [26/Jan/2025 09:31:36] "GET /loans/only_active HTTP/1.1" 200 -
+2025-01-26 09:31:41,194 - INFO - 127.0.0.1 - - [26/Jan/2025 09:31:41] "GET /books HTTP/1.1" 200 -
+2025-01-26 09:31:49,370 - INFO - 127.0.0.1 - - [26/Jan/2025 09:31:49] "[33mGET /customers/name/Bob%20Goodman HTTP/1.1[0m" 404 -
+2025-01-26 09:31:59,959 - INFO - 127.0.0.1 - - [26/Jan/2025 09:31:59] "GET /customers/name/Ace HTTP/1.1" 200 -
+2025-01-26 09:32:01,998 - INFO - 127.0.0.1 - - [26/Jan/2025 09:32:01] "GET /books HTTP/1.1" 200 -
+2025-01-26 09:32:02,348 - INFO - 127.0.0.1 - - [26/Jan/2025 09:32:02] "GET /books HTTP/1.1" 200 -
+2025-01-26 09:32:02,745 - INFO - 127.0.0.1 - - [26/Jan/2025 09:32:02] "GET /books HTTP/1.1" 200 -
+2025-01-26 09:32:03,387 - INFO - 127.0.0.1 - - [26/Jan/2025 09:32:03] "GET /books HTTP/1.1" 200 -
+2025-01-26 09:32:03,795 - INFO - 127.0.0.1 - - [26/Jan/2025 09:32:03] "GET /books HTTP/1.1" 200 -
+2025-01-26 09:32:04,186 - INFO - 127.0.0.1 - - [26/Jan/2025 09:32:04] "GET /books HTTP/1.1" 200 -
+2025-01-26 09:32:04,597 - INFO - 127.0.0.1 - - [26/Jan/2025 09:32:04] "GET /books HTTP/1.1" 200 -
+2025-01-26 09:32:04,980 - INFO - 127.0.0.1 - - [26/Jan/2025 09:32:04] "GET /books HTTP/1.1" 200 -
+2025-01-26 09:32:05,459 - INFO - 127.0.0.1 - - [26/Jan/2025 09:32:05] "GET /books HTTP/1.1" 200 -
+2025-01-26 09:32:08,544 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-01-26 09:32:08,545 - INFO - [33mPress CTRL+C to quit[0m
+2025-01-26 09:32:08,548 - INFO -  * Restarting with stat
+2025-01-26 09:32:09,420 - WARNING -  * Debugger is active!
+2025-01-26 09:32:09,422 - INFO -  * Debugger PIN: 137-232-298
+2025-01-26 09:32:11,918 - INFO - 127.0.0.1 - - [26/Jan/2025 09:32:11] "GET /books HTTP/1.1" 200 -
+2025-01-26 09:32:16,766 - INFO - 127.0.0.1 - - [26/Jan/2025 09:32:16] "GET /customers/name/Ace HTTP/1.1" 200 -
+2025-01-26 09:32:21,487 - INFO - 127.0.0.1 - - [26/Jan/2025 09:32:21] "OPTIONS /loans/name/ HTTP/1.1" 200 -
+2025-01-26 09:32:21,512 - INFO - 127.0.0.1 - - [26/Jan/2025 09:32:21] "[35m[1mPOST /loans/name/ HTTP/1.1[0m" 201 -
+2025-01-26 09:32:21,742 - INFO - 127.0.0.1 - - [26/Jan/2025 09:32:21] "GET /books HTTP/1.1" 200 -
+2025-01-26 09:32:22,051 - INFO - 127.0.0.1 - - [26/Jan/2025 09:32:22] "GET /books HTTP/1.1" 200 -
+2025-01-26 09:32:22,452 - INFO - 127.0.0.1 - - [26/Jan/2025 09:32:22] "GET /books HTTP/1.1" 200 -
+2025-01-26 09:32:22,831 - INFO - 127.0.0.1 - - [26/Jan/2025 09:32:22] "GET /books HTTP/1.1" 200 -
+2025-01-26 09:32:23,259 - INFO - 127.0.0.1 - - [26/Jan/2025 09:32:23] "GET /books HTTP/1.1" 200 -
+2025-01-26 09:32:23,642 - INFO - 127.0.0.1 - - [26/Jan/2025 09:32:23] "GET /books HTTP/1.1" 200 -
+2025-01-26 09:32:24,105 - INFO - 127.0.0.1 - - [26/Jan/2025 09:32:24] "GET /books HTTP/1.1" 200 -
+2025-01-26 09:32:24,492 - INFO - 127.0.0.1 - - [26/Jan/2025 09:32:24] "GET /books HTTP/1.1" 200 -
+2025-01-26 09:32:26,514 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-01-26 09:32:26,515 - INFO - [33mPress CTRL+C to quit[0m
+2025-01-26 09:32:26,518 - INFO -  * Restarting with stat
+2025-01-26 09:32:27,476 - WARNING -  * Debugger is active!
+2025-01-26 09:32:27,481 - INFO -  * Debugger PIN: 137-232-298
+2025-01-26 09:32:27,556 - INFO - 127.0.0.1 - - [26/Jan/2025 09:32:27] "GET /loans/only_active HTTP/1.1" 200 -
+2025-01-26 09:32:36,050 - INFO - 127.0.0.1 - - [26/Jan/2025 09:32:36] "GET /loans/history/ace HTTP/1.1" 200 -
+2025-01-26 09:32:42,475 - INFO - 127.0.0.1 - - [26/Jan/2025 09:32:42] "GET /books HTTP/1.1" 200 -
