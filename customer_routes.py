@@ -18,7 +18,7 @@ def get_customers():
         "name": customer.name,
         "city": customer.city,
         "age": customer.age,
-        "join_date": format_date(customer.join_date),  # Format join_date
+        "join_date": format_date(customer.join_date),  
         "email": customer.email,
         "active": customer.active
     } for customer in customers]
@@ -27,7 +27,7 @@ def get_customers():
 # Find a customer by ID
 @customer_bp.route('/customers/<int:id>', methods=['GET'])
 def get_customer_by_id(id):
-    customer = Customer.query.get(id)  # Get the customer by ID
+    customer = Customer.query.get(id) 
     if not customer:
         return jsonify({"message": "Customer not found"}), 404
 
@@ -37,7 +37,7 @@ def get_customer_by_id(id):
         "city": customer.city,
         "age": customer.age,
         "email": customer.email,
-        "join_date": format_date(customer.join_date),  # Format join_date for HTML input
+        "join_date": format_date(customer.join_date),  
         "active": customer.active
     }
     
@@ -46,10 +46,9 @@ def get_customer_by_id(id):
 # Find active customer by name
 @customer_bp.route('/customers/name/<name>', methods=['GET'])
 def search_customer_by_name(name): 
-    # Search for active customers with the given name
     customers = Customer.query.filter(
     Customer.name.ilike(f"%{name}%"),
-    Customer.active == True  # Ensure the customer is active
+    Customer.active == True 
 ).all()
     
     if not customers:
@@ -61,7 +60,7 @@ def search_customer_by_name(name):
         "city": customer.city,
         "age": customer.age,
         "email": customer.email,
-        "join_date": format_date(customer.join_date),  # Format join_date
+        "join_date": format_date(customer.join_date), 
         "active": customer.active
     } for customer in customers]
     return jsonify(customers_list)
@@ -69,7 +68,6 @@ def search_customer_by_name(name):
 # Find a customer by email
 @customer_bp.route('/customers/email/<email>', methods=['GET'])
 def search_customer_by_email(email): 
-    # Search for customers with the given email
     customers = Customer.query.filter(Customer.email.ilike(f"%{email}%")).all()
     if not customers:
         return jsonify({"message": "No customers found with that email"}), 404
@@ -80,7 +78,7 @@ def search_customer_by_email(email):
         "city": customer.city,
         "age": customer.age,
         "email": customer.email,
-        "join_date": format_date(customer.join_date),  # Format join_date
+        "join_date": format_date(customer.join_date),  
         "active": customer.active
     } for customer in customers]
     return jsonify(customers_list)
@@ -92,19 +90,16 @@ def add_customer():
     name = data.get('name')
     city = data.get('city')
     age = data.get('age')
-    join_date_str = data.get('join_date')  # join_date as string
+    join_date_str = data.get('join_date')
 
-    # Validate required fields
     if not name or not city or not age or not join_date_str:
         return jsonify({"message": "Name, city, age, and join date are required"}), 400
 
     try:
-        # Parse the join_date string to a datetime object
         join_date = datetime.strptime(join_date_str, "%Y-%m-%d")
     except ValueError:
         return jsonify({"message": "Invalid join_date format. Use YYYY-MM-DD."}), 400
 
-    # Create a new customer
     new_customer = Customer(name=name, city=city, age=age, join_date=join_date, email=data.get('email'))
     db.session.add(new_customer)
     db.session.commit()
@@ -114,18 +109,16 @@ def add_customer():
 # Update a customer by ID
 @customer_bp.route('/customers/update/id/<int:id>', methods=['PUT'])
 def update_customer(id):
-    customer = Customer.query.get(id)  # Use get to retrieve the customer by ID
+    customer = Customer.query.get(id)  
     if not customer:
         return jsonify({"message": "Customer not found"}), 404
 
     data = request.get_json()
 
-    # Update fields
     customer.name = data.get('name', customer.name)
     customer.city = data.get('city', customer.city)
     customer.age = data.get('age', customer.age)
 
-    # Handle join_date if provided
     join_date_str = data.get('join_date')
     if join_date_str:
         try:

@@ -8,7 +8,7 @@ from loan_routes import loan_bp
 
 # Initialize the Flask application
 app = Flask(__name__)
-CORS(app, methods=["GET", "POST", "PUT", "PATCH"]) # Enable CORS for the entire app
+CORS(app, methods=["GET", "POST", "PUT", "PATCH"]) 
 
 # Configure the SQLite database URI
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///library.db'
@@ -28,9 +28,9 @@ logging.basicConfig(level=logging.WARNING,
 logger = logging.getLogger(__name__)
 
 # Register the Blueprint
-app.register_blueprint(books_bp)  # Register the books routes
-app.register_blueprint(customer_bp)  # Register the customers routes
-app.register_blueprint(loan_bp)  # Register the customers routes
+app.register_blueprint(books_bp)  
+app.register_blueprint(customer_bp)  
+app.register_blueprint(loan_bp)  
 
 @app.route('/')
 def hello_world():

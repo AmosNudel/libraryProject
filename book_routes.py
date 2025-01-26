@@ -1,5 +1,5 @@
 from flask import Blueprint, jsonify, request
-from models import db, Book  # Import your `db` and `Book` model from the main app
+from models import db, Book  
 
 # Create a Blueprint for the books routes
 books_bp = Blueprint('books', __name__)
@@ -19,8 +19,7 @@ def get_books():
 # Find a book by ID
 @books_bp.route('/books/<int:id>', methods=['GET'])
 def search_book_by_id(id):
-    # Search for the book with the given ID
-    book = Book.query.get(id)  # This will fetch the book by its primary key (ID)
+    book = Book.query.get(id) 
     
     if not book:
         return jsonify({"message": "Book not found"}), 404
@@ -38,10 +37,10 @@ def search_book_by_id(id):
     
     return jsonify(book_data)
 
-# Find a book by name (title)
+# Find a book by title
 @books_bp.route('/books/<title>', methods=['GET'])
 def search_book_by_name(title):
-    # Search for book with the given title
+
     books = Book.query.filter(Book.title.ilike(f"%{title}%")).all()
     
     if not books:
@@ -72,11 +71,10 @@ def add_book():
     db.session.commit()
     return jsonify({"message": "Book created", "id": new_book.id}), 201
 
-# Update a book by ID
-@books_bp.route('/books/<int:book_id>', methods=['PUT'])
-def update_book(book_id):
-    # Fetch the book with the given ID
-    book = Book.query.get(book_id)  # This fetches the book by its ID
+# Update a book
+@books_bp.route('/books/<int:id>', methods=['PUT'])
+def update_book(id):
+    book = Book.query.get(id) 
 
     if not book:
         return jsonify({"message": "Book not found"}), 404
@@ -89,9 +87,8 @@ def update_book(book_id):
     book.author = data.get('author', book.author)
     book.year_published = data.get('year_published', book.year_published)
     book.type = data.get('type', book.type)
-    book.image = data.get('image', book.image)  # Update the image URL if provided
-    
-    # Commit the changes to the database
+    book.image = data.get('image', book.image)  
+
     db.session.commit()
     
     return jsonify({"message": "Book updated", "id": book.id})
