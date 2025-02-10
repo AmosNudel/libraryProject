@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loans</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.6.7/dist/axios.min.js"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <header>
+        <div id="links">
+            <a href="index.html">Book Managment</a>
+            <a href="customers.html">Customer Managment</a>
+            <a href="loans.html">Loan Managment</a>
+    </header>
+    </div>
+    <a href="loans.html">Return</a>
+
+    <div id="loansDisplay">
+        <!-- Loans will be dynamically displayed here -->
+    </div>
+
+    <script>
+        const SERVER = "http://127.0.0.1:5000";
+        let isFetchingLoans = false;
+
+        // Helper function to convert strings to title case
+        const toTitleCase = (str) => {
+            return str.replace(/\b(\w)/g, char => char.toUpperCase());
+        };
+
+        // Function to generate HTML for displaying a loan (both active and full history)
+        const generateLoanHTML = (loan) => {
+            return `
+<div class="loan">
+    <p><strong>Loan ID:</strong> ${toTitleCase(loan.id.toString())}</p>
+    <p><strong>Book Title:</strong> ${toTitleCase(loan.book_title)}</p>
+    <p><strong>Customer Name:</strong> ${toTitleCase(loan.customer_name)}</p>
+    <p><strong>Loan Date:</strong> ${toTitleCase(loan.loan_date)}</p>
+    <p><strong>Return Date:</strong> ${toTitleCase(loan.return_date)}</p>
+    <p><strong>Status:</strong> ${toTitleCase(loan.active ? 'Active' : 'Returned')}</p>
+    ${loan.active ?
+                    `<button onclick="returnLoan(${loan.id})">Return</button>` :
+                    ''
+                }
+    <button onclick="window.location.href='loan_update.html?id=${loan.id}'">Update</button>
+</div>
+`;
+        };
+
+        // Function to parse the date string into a Date object
+        const parseDate = (dateString) => {
+            return new Date(dateString); 
+        };
+
+        // Display all loans
+        const readLoans = () => {
+            if (isFetchingLoans) return;
+
+            isFetchingLoans = true;
+
+            axios.get(SERVER + '/loans')
+                .then(response => {
+                    let loans = response.data;
+
+                    // Sort loans by loan_date in descending order (latest first)
+                    loans.sort((a, b) => parseDate(b.loan_date) - parseDate(a.loan_date));
+
+                    let loansHTML = '';
+                    loans.forEach(loan => {
+                        loansHTML += generateLoanHTML(loan);
+                    });
+
+                    document.getElementById('loansDisplay').innerHTML = loansHTML;
+                })
+                .catch(error => {
+                    console.error('Error fetching loans:', error);
+                    document.getElementById('loansDisplay').innerHTML = '<p>Could not load loans. Please try again later.</p>';
+                })
+                .finally(() => {
+                    isFetchingLoans = false;
+                });
+        };
+
+        // Initial fetch when page loads
+        window.onload = () => {
+            readLoans(); 
+        };
+    </script>
+
+</body>
+
+</html>

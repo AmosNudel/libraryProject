@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loan Managment</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.6.7/dist/axios.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <link rel="stylesheet" href="styles.css">
+
+</head>
+
+<body>
+    <header>
+        <div id="links">
+            <a href="index.html">Book Managment</a>
+            <a href="customers.html">Customer Managment</a>
+            <a href="loans.html">Loan Managment</a>
+        </div>
+    </header>
+    <a href="all_loans_with_returned.html">All Loans History</a>
+    <a href="add_loan.html">Add a new Loan</a>
+
+    <!-- Search Input for Customer Name -->
+    <h2>Search Customer Loan Information</h2>
+    <label for="customerName">Customer Name:</label>
+    <input type="text" id="customerName" placeholder="Enter customer name" />
+
+    <!-- Buttons for Search -->
+    <button id="searchHistoryButton">Search Loan History</button>
+    <button id="searchActiveButton">Search Active Loans</button>
+    <button id="clearSearchButton">Clear Search</button>
+    <button id="showOverdueButton">Show Overdue Loans</button>
+
+    <div id="loansDisplay">
+        <!-- Loan history will be dynamically displayed here -->
+    </div>
+
+    <script>
+        const SERVER = "http://127.0.0.1:5000";
+        let isFetchingLoans = false;
+        let isOverdueDisplayed = false;  
+    
+        // Helper function to convert strings to title case
+        const toTitleCase = (str) => {
+            return str.replace(/\b(\w)/g, char => char.toUpperCase());
+        };
+    
+        // Function to generate HTML for displaying a loan (both active and full history)
+        const generateLoanHTML = (loan) => {
+            return `
+            <div class="loan">
+                <p><strong>Loan ID:</strong> ${toTitleCase(loan.id.toString())}</p>
+                <p><strong>Book Title:</strong> ${toTitleCase(loan.book_title)}</p>
+                <p><strong>Customer Name:</strong> ${toTitleCase(loan.customer_name)}</p>
+                <p><strong>Loan Date:</strong> ${toTitleCase(loan.loan_date)}</p>
+                <p><strong>Return Date:</strong> ${toTitleCase(loan.return_date)}</p>
+                <p><strong>Status:</strong> ${toTitleCase(loan.active ? 'Active' : 'Returned')}</p>
+                ${loan.active ? `<button onclick="returnLoan(${loan.id})">Return</button>` : ''}
+                <button onclick="window.location.href='loan_update.html?id=${loan.id}'">Update</button>
+            </div>
+        `;
+        };
+    
+        // Function to search for active loans by customer name
+        const searchActiveLoansByCustomer = (name) => {
+            if (name.trim() === "") {
+                Toastify({
+                    text: "Please enter a customer name to search.",
+                    duration: 3000,
+                    close: true,
+                    gravity: "top", 
+                    position: "right", 
+                    style: {
+                        background: "linear-gradient(to right, #ff6a00, #ee0979)" 
+                    },
+                    stopOnFocus: true
+                }).showToast();
+                return;
+            }
+    
+            axios.get(`${SERVER}/loans/active/${name}`)
+                .then(response => {
+                    let loansHTML = '';
+                    if (response.data.length === 0) {
+                        loansHTML = `<p>No active loans found for customer '${name}'.</p>`;
+                    } else {
+                        response.data.forEach(customer => {
+                            customer.active_loans.forEach(loan => {
+                                loansHTML += generateLoanHTML(loan); 
+                            });
+                        });
+                    }
+                    document.getElementById('loansDisplay').innerHTML = loansHTML;
+                })
+                .catch(error => {
+                    console.error('Error fetching active loans:', error);
+                    Toastify({
+                        text: "Could not load active loan history. Please try again later.",
+                        duration: 3000,
+                        close: true,
+                        gravity: "top", 
+                        position: "right", 
+                        style: {
+                            background: "linear-gradient(to right, #ff6a00, #ee0979)" 
+                        },
+                        stopOnFocus: true
+                    }).showToast();
+                });
+        };
+    
+        // Function to search for full loan history by customer name
+        const searchLoanHistoryByCustomer = (name) => {
+            if (name.trim() === "") {
+                Toastify({
+                    text: "Please enter a customer name to search.",
+                    duration: 3000,
+                    close: true,
+                    gravity: "top", 
+                    position: "right", 
+                    style: {
+                        background: "linear-gradient(to right, #ff6a00, #ee0979)" 
+                    },
+                    stopOnFocus: true
+                }).showToast();
+                return;
+            }
+    
+            axios.get(`${SERVER}/loans/history/${name}`)
+                .then(response => {
+                    let loansHTML = '';
+                    if (response.data.length === 0) {
+                        loansHTML = `<p>No loan history found for customer '${name}'.</p>`;
+                    } else {
+                        response.data.forEach(customer => {
+                            customer.all_loans.forEach(loan => {
+                                loansHTML += generateLoanHTML(loan); 
+                            });
+                        });
+                    }
+                    document.getElementById('loansDisplay').innerHTML = loansHTML;
+                })
+                .catch(error => {
+                    console.error('Error fetching loan history:', error);
+                    Toastify({
+                        text: "Could not load loan history. Please try again later.",
+                        duration: 3000,
+                        close: true,
+                        gravity: "top", 
+                        position: "right", 
+                        style: {
+                            background: "linear-gradient(to right, #ff6a00, #ee0979)" 
+                        },
+                        stopOnFocus: true
+                    }).showToast();
+                });
+        };
+    
+        // Function to display all active loans (for the initial page load)
+        const readActiveLoans = () => {
+            if (isFetchingLoans) return;  
+    
+            isFetchingLoans = true;  
+    
+            axios.get(`${SERVER}/loans/only_active`)
+                .then(response => {
+                    let loansHTML = '';
+                    response.data.forEach(loan => {
+                        loansHTML += generateLoanHTML(loan); 
+                    });
+                    document.getElementById('loansDisplay').innerHTML = loansHTML;
+                })
+                .catch(error => {
+                    console.error('Error fetching active loans:', error);
+                    Toastify({
+                        text: "Could not load active loans. Please try again later.",
+                        duration: 3000,
+                        close: true,
+                        gravity: "top", 
+                        position: "right", 
+                        style: {
+                            background: "linear-gradient(to right, #ff6a00, #ee0979)" 
+                        },
+                        stopOnFocus: true
+                    }).showToast();
+                })
+                .finally(() => {
+                    isFetchingLoans = false; 
+                });
+        };
+    
+        // Function to fetch overdue loans
+        const fetchOverdueLoans = () => {
+            if (isFetchingLoans) return;  
+    
+            isFetchingLoans = true;
+            axios.get(`${SERVER}/loans/overdue`)
+                .then(response => {
+                    let loansHTML = '';
+                    if (response.data.length === 0) {
+                        loansHTML = `<p>No overdue loans found.</p>`;
+                    } else {
+                        response.data.forEach(loan => {
+                            loansHTML += generateLoanHTML(loan); 
+                        });
+                    }
+                    document.getElementById('loansDisplay').innerHTML = loansHTML;
+                })
+                .catch(error => {
+                    console.error('Error fetching overdue loans:', error);
+                    Toastify({
+                        text: "Could not load overdue loans. Please try again later.",
+                        duration: 3000,
+                        close: true,
+                        gravity: "top", 
+                        position: "right", 
+                        style: {
+                            background: "linear-gradient(to right, #ff6a00, #ee0979)" 
+                        },
+                        stopOnFocus: true
+                    }).showToast();
+                })
+                .finally(() => {
+                    isFetchingLoans = false;
+                });
+        };
+    
+        // Function to toggle between overdue loans and active loans
+        const toggleLoans = () => {
+            if (isOverdueDisplayed) {
+                readActiveLoans();
+                document.getElementById('showOverdueButton').textContent = "Show Overdue Loans";
+            } else {
+                fetchOverdueLoans();
+                document.getElementById('showOverdueButton').textContent = "Show Active Loans";
+            }
+    
+            isOverdueDisplayed = !isOverdueDisplayed;
+        };
+    
+        // Function to clear the search input and reset the display
+        const clearSearch = () => {
+            document.getElementById('customerName').value = '';
+    
+            document.getElementById('loansDisplay').innerHTML = '';
+    
+            readActiveLoans();
+        };
+    
+        // Event listener for when the "Search Active Loans" button is clicked
+        document.getElementById('searchActiveButton').addEventListener('click', () => {
+            const customerName = document.getElementById('customerName').value;
+            searchActiveLoansByCustomer(customerName);
+        });
+    
+        // Event listener for when the "Search Loan History" button is clicked
+        document.getElementById('searchHistoryButton').addEventListener('click', () => {
+            const customerName = document.getElementById('customerName').value;
+            searchLoanHistoryByCustomer(customerName);
+        });
+    
+        // Event listener for when the "Clear Search" button is clicked
+        document.getElementById('clearSearchButton').addEventListener('click', clearSearch);
+    
+        // Event listener for when the "Show Overdue Loans" button is clicked
+        document.getElementById('showOverdueButton').addEventListener('click', toggleLoans);
+    
+        // Initial fetch when page loads
+        window.onload = () => {
+            readActiveLoans(); 
+        };
+    
+        // Function to return a loan
+        const returnLoan = (loanId) => {
+            axios.patch(`${SERVER}/loans/return/${loanId}`)
+                .then(response => {
+                    Toastify({
+                        text: `Loan ${loanId} returned successfully!`,
+                        duration: 3000,
+                        close: true,
+                        gravity: "top", 
+                        position: "right", 
+                        style: {
+                            background: "linear-gradient(to right, #28a745, #218838)" 
+                        },
+                        stopOnFocus: true
+                    }).showToast();
+                    readActiveLoans();
+                })
+                .catch(error => {
+                    console.error('Error returning loan:', error);
+                    Toastify({
+                        text: "There was an issue returning the loan. Please try again later.",
+                        duration: 3000,
+                        close: true,
+                        gravity: "top", 
+                        position: "right", 
+                        style: {
+                            background: "linear-gradient(to right, #ff6a00, #ee0979)" 
+                        },
+                        stopOnFocus: true
+                    }).showToast();
+                });
+        };
+    </script>
+    
+</body>
+
+</html>

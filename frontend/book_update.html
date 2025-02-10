@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Book</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.6.7/dist/axios.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <link rel="stylesheet" href="styles.css">
+
+</head>
+
+<body>
+    <header>
+        <div id="links">
+            <a href="index.html">Book Managment</a>
+            <a href="customers.html">Customer Managment</a>
+            <a href="loans.html">Loan Managment</a>
+        </div>
+    </header>
+
+    
+    <h3>Update Book</h3>
+    
+    <!-- Book Update Inputs -->
+    <label for="bookTitle">Title:</label>
+    <input type="text" id="bookTitle"><br>
+    
+    <label for="bookAuthor">Author:</label>
+    <input type="text" id="bookAuthor"><br>
+    
+    <label for="bookYear">Year Published:</label>
+    <input type="number" id="bookYear"><br>
+    
+    <label for="bookType">Type:</label>
+    <input type="text" id="bookType"><br>
+    
+    <!-- Image URL input field -->
+    <label for="bookImage">Image URL:</label>
+    <input type="text" id="bookImage" placeholder="Enter Image URL"><br>
+    
+    <button onclick="updateBook()">Update Book</button>
+
+    <script>
+        const SERVER = "http://127.0.0.1:5000";
+    
+        // Convert string to title case
+        const toTitleCase = str => str
+            .toLowerCase()
+            .split(' ')
+            .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+            .join(' ');
+    
+        // Get book ID from the URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const bookId = urlParams.get('id');  
+    
+        // Fetch book data for the given book ID
+        axios.get(`${SERVER}/books/${bookId}`)
+            .then(response => {
+                const book = response.data;
+    
+                document.getElementById('bookTitle').value = book.title;
+                document.getElementById('bookAuthor').value = book.author;
+                document.getElementById('bookYear').value = book.year_published;
+                document.getElementById('bookType').value = book.type;
+                document.getElementById('bookImage').value = book.image; 
+            })
+            .catch(error => {
+                console.error('Error fetching book:', error);
+                Toastify({
+                    text: 'Could not load the book details for updating',
+                    duration: 3000,
+                    close: true,
+                    gravity: "top", 
+                    position: "right", 
+                    style: {
+                        background: "linear-gradient(to right, #ff6a00, #ee0979)" 
+                    },
+                    stopOnFocus: true
+                }).showToast();
+            });
+    
+        // Function to handle the update 
+        const updateBook = () => {
+            const updatedBook = {
+                title: toTitleCase(document.getElementById('bookTitle').value),  
+                author: toTitleCase(document.getElementById('bookAuthor').value),  
+                year_published: document.getElementById('bookYear').value,
+                type: document.getElementById('bookType').value,
+                image: document.getElementById('bookImage').value 
+            };
+    
+            axios.put(`${SERVER}/books/${bookId}`, updatedBook)
+                .then(() => {
+                    Toastify({
+                        text: 'Book updated successfully',
+                        duration: 3000,
+                        close: true,
+                        gravity: "top", 
+                        position: "right", 
+                        style: {
+                            background: "linear-gradient(to right, #28a745, #218838)" 
+                        },
+                        stopOnFocus: true
+                    }).showToast()
+                })
+                .catch(error => {
+                    console.error('Error updating book:', error);
+                    Toastify({
+                        text: 'Could not update the book. Please try again later.',
+                        duration: 3000,
+                        close: true,
+                        gravity: "top", 
+                        position: "right", 
+                        style: {
+                            background: "linear-gradient(to right, #ff6a00, #ee0979)" 
+                        },
+                        stopOnFocus: true
+                    }).showToast();
+                });
+        }
+    </script>
+      
+</body>
+
+</html>

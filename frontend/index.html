@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Books Managment</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.6.7/dist/axios.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <link rel="stylesheet" href="styles.css">
+
+
+</head>
+
+<body>
+    <header>
+        <div id="links">
+            <a href="index.html">Book Managment</a>
+            <a href="customers.html">Customer Managment</a>
+            <a href="loans.html">Loan Managment</a>
+        </div>
+    </header>
+
+    <!-- Add Book Link-->
+    <a href="add_book.html">Add a Book</a>
+
+    <!-- Search Book by Title -->
+    <div id="homepageBookSearch">
+        <h3>Search Book by Title</h3>
+        <input type="text" id="bookTitle" placeholder="Enter Book Title">
+        <button onclick="searchBookByTitle()">Search Book</button>
+        <button onclick="resetSearchResults()">Reset Search</button> <!-- Reset button -->
+        <div id="booksList"></div>
+    </div>
+    <hr>
+    <!-- Display Books -->
+    <div id="homepageAllBooks">
+        <h3>Display Books</h3>
+        <div id="booksDisplay"></div>
+    </div>
+
+    <script>
+        const SERVER = "http://127.0.0.1:5000";
+        let isFetchingBooks = false;
+
+        // Function to generate HTML for displaying a book
+        const generateBookHTML = (book) => {
+            return `
+                <div class="book">
+                    <h3>${book.title}</h3>
+                    <p><strong>Author:</strong> ${book.author}</p>
+                    <p><strong>Year Published:</strong> ${book.year_published}</p>
+                    <p><strong>Type:</strong> ${book.type}</p>
+                    <img src="${book.image}" alt="${book.title}" style="width: 100px; height: 150px;">
+                    <p><strong>Book ID:</strong> ${book.id}</p>
+                    <button onclick="window.location.href='book_update.html?id=${book.id}'">Update</button>
+                    <button onclick="deactivateBook(${book.id})">Delete</button>
+                </div>
+            `;
+        };
+
+        // Search book by title
+        const searchBookByTitle = () => {
+            let title = document.getElementById('bookTitle').value;
+
+            if (!title) {
+                Toastify({
+                    text: "Please enter a book title",
+                    duration: 3000,
+                    close: true,
+                    gravity: "top",
+                    position: "right",
+                    style: {
+                        background: "linear-gradient(to right, #ff7e5f, #feb47b)"
+                    },
+                    stopOnFocus: true
+                }).showToast();
+                return;
+            }
+
+            axios.get(`${SERVER}/books/${title}`)
+                .then(response => {
+                    const books = response.data;
+
+                    if (books.length > 0) {
+                        let booksHTML = '';
+                        books.forEach(book => {
+                            if (book.active) {
+                                booksHTML += generateBookHTML(book);
+                            }
+                        });
+                        document.getElementById('booksList').innerHTML = booksHTML;
+                    } else {
+                        document.getElementById('booksList').innerHTML = `<p>No books found with that title</p>`;
+                    }
+                })
+                .catch(error => {
+                    let errorMessage = "Something went wrong. Please try again later.";
+                    if (error.response && error.response.status === 404) {
+                        errorMessage = "No books found with that title";
+                    }
+
+                    Toastify({
+                        text: errorMessage,
+                        duration: 3000,
+                        close: true,
+                        gravity: "top",
+                        position: "right",
+                        style: {
+                            background: "linear-gradient(to right, #ff6a00, #ee0979)"
+                        },
+                        stopOnFocus: true
+                    }).showToast();
+                });
+        };
+
+
+        // Display all books
+        const readBooks = () => {
+            if (isFetchingBooks) return;  // Prevent multiple requests
+
+            isFetchingBooks = true;
+
+            axios.get(SERVER + '/books')
+                .then(response => {
+                    let booksHTML = '';
+                    response.data.forEach(book => {
+                        if (book.active) {
+                            booksHTML += generateBookHTML(book);
+                        }
+                    });
+                    document.getElementById('booksDisplay').innerHTML = booksHTML;
+                })
+                .catch(error => {
+                    console.error('Error fetching books:', error);
+                    document.getElementById('booksDisplay').innerHTML = '<p>Could not load books. Please try again later.</p>';
+                })
+                .finally(() => {
+                    isFetchingBooks = false; 
+                });
+        };
+
+        // Reset search results
+        const resetSearchResults = () => {
+            document.getElementById('booksList').innerHTML = ''; 
+            document.getElementById('bookTitle').value = ''; 
+        };
+
+        // Deactivate Book
+        const deactivateBook = (bookId) => {
+            if (confirm('Are you sure you want to delete this book?')) {  
+                axios.patch(`${SERVER}/books/${bookId}`)
+                    .then(() => {
+                        Toastify({
+                            text: 'Book successfully deleted',
+                            duration: 3000,
+                            close: true,
+                            gravity: "top", 
+                            position: "right", 
+                            style: {
+                                background: "linear-gradient(to right, #28a745, #218838)" 
+                            },
+                            stopOnFocus: true
+                        }).showToast();
+
+                        readBooks();  
+                    })
+                    .catch(error => {
+                        console.error('Error deleting book:', error);
+
+                        Toastify({
+                            text: 'There was an issue deleting the book. Please try again later.',
+                            duration: 3000,
+                            close: true,
+                            gravity: "top",
+                            position: "right",
+                            style: {
+                                background: "linear-gradient(to right, #ff6a00, #ee0979)" 
+                            },
+                            stopOnFocus: true
+                        }).showToast();
+                    });
+            }
+        };
+
+        // Initial fetch when page loads
+        window.onload = () => {
+            readBooks();
+        };
+    </script>
+
+</body>
+
+</html>

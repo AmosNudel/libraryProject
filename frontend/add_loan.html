@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Loan</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.6.7/dist/axios.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <link rel="stylesheet" href="styles.css">
+
+</head>
+
+<body>
+    <header>
+        <div id="links">
+            <a href="index.html">Book Management</a>
+            <a href="customers.html">Customer Management</a>
+            <a href="loans.html">Loan Management</a>
+        </div>
+    </header>
+    <a href="loans.html">Return</a>
+
+    <h3>Add Loan</h3>
+
+    <!-- Dropdown for Book Selection -->
+    <label for="bookSelect">Select Book:</label>
+    <select id="bookSelect" required>
+        <option value="">--Select Book--</option>
+    </select>
+    <br>
+
+    <!-- Customer Name Input -->
+    <label for="customerName">Customer Name:</label>
+    <input type="text" id="customerName" placeholder="Enter customer name" oninput="searchCustomers()">
+    <br>
+
+    <!-- Customer Email Dropdown -->
+    <label for="customerEmailSelect">Select Customer Email:</label>
+    <select id="customerEmailSelect" required>
+        <option value="">--Select Customer Email--</option>
+    </select>
+    <br>
+
+    <!-- Loan Date -->
+    <label for="loanDate">Loan Date:</label>
+    <input type="date" id="loanDate" required><br>
+
+    <button onclick="addLoan()">Add Loan</button>
+
+    <script>
+        const SERVER = "http://127.0.0.1:5000";
+    
+        // Fetch and populate the list of books
+        const loadBooks = () => {
+            axios.get(`${SERVER}/books`)  
+                .then(response => {
+                    const bookSelect = document.getElementById('bookSelect');
+                    response.data.forEach(book => {
+                        const option = document.createElement('option');
+                        option.value = book.title;  
+                        option.textContent = book.title;  
+                        bookSelect.appendChild(option);
+                    });
+                })
+                .catch(error => {
+                    console.error('Error loading books:', error);
+                    Toastify({
+                        text: "Could not load the book list. Please try again later.",
+                        duration: 3000,
+                        close: true,
+                        gravity: "top", 
+                        position: "right", 
+                        style: {
+                            background: "linear-gradient(to right, #ff6a00, #ee0979)" 
+                        },
+                        stopOnFocus: true
+                    }).showToast();
+                });
+        };
+    
+        // Call loadBooks function when the page loads
+        window.onload = loadBooks;
+    
+        // Function to fetch customers by name from backend
+        const searchCustomers = () => {
+            const name = document.getElementById('customerName').value;
+            if (name.length >= 3) {  // Trigger search after 3 characters
+                axios.get(`${SERVER}/customers/name/${name}`)
+                    .then(response => {
+                        const emailSelect = document.getElementById('customerEmailSelect');
+                        emailSelect.innerHTML = '<option value="">--Select Customer Email--</option>';  
+                        response.data.forEach(customer => {
+                            const option = document.createElement('option');
+                            option.value = customer.id;
+                            option.textContent = customer.email;  
+                            emailSelect.appendChild(option);
+                        });
+                    })
+                    .catch(error => {
+                        console.error('Error searching customers:', error);
+                        Toastify({
+                            text: "Could not search for customers. Please try again later.",
+                            duration: 3000,
+                            close: true,
+                            gravity: "top", 
+                            position: "right", 
+                            style: {
+                                background: "linear-gradient(to right, #ff6a00, #ee0979)"
+                            },
+                            stopOnFocus: true
+                        }).showToast();
+                    });
+            }
+        };
+    
+        // Function to add a new loan
+        const addLoan = () => {
+            const bookName = document.getElementById('bookSelect').value;
+            const customerId = document.getElementById('customerEmailSelect').value;
+            const loanDate = document.getElementById('loanDate').value;
+    
+            if (!bookName || !customerId || !loanDate) {
+                Toastify({
+                    text: "Please select a book, a customer, and a loan date.",
+                    duration: 3000,
+                    close: true,
+                    gravity: "top", 
+                    position: "right", 
+                    style: {
+                        background: "linear-gradient(to right, #ff6a00, #ee0979)" 
+                    },
+                    stopOnFocus: true
+                }).showToast();
+                return;
+            }
+    
+            const newLoan = {
+                book_name: bookName,
+                customer_name: document.getElementById('customerName').value,
+                loan_date: loanDate
+            };
+    
+            // Send the new loan data to the backend using POST
+            axios.post(`${SERVER}/loans/name/`, newLoan)
+                .then(response => {
+                    Toastify({
+                        text: "Loan added successfully.",
+                        duration: 3000,
+                        close: true,
+                        gravity: "top", 
+                        position: "right", 
+                        style: {
+                            background: "linear-gradient(to right, #28a745, #218838)" 
+                        },
+                        stopOnFocus: true
+                    }).showToast();
+                })
+                .catch(error => {
+                    console.error('Error adding loan:', error);
+                    Toastify({
+                        text: "Could not add the loan. Please try again later.",
+                        duration: 3000,
+                        close: true,
+                        gravity: "top", 
+                        position: "right",
+                        style: {
+                            background: "linear-gradient(to right, #ff6a00, #ee0979)" 
+                        },
+                        stopOnFocus: true
+                    }).showToast();
+                });
+        };
+    </script>
+    
+
+</body>
+
+</html>

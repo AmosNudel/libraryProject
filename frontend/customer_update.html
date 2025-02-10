@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Customer</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.6.7/dist/axios.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <link rel="stylesheet" href="styles.css">
+
+</head>
+
+<body>
+    <header>
+        <div id="links">
+            <a href="index.html">Book Managment</a>
+            <a href="customers.html">Customer Managment</a>
+            <a href="loans.html">Loan Managment</a>
+        </div>
+    </header>
+
+    
+    <h3>Update Customer</h3>
+
+    <!-- Customer Update Inputs -->
+    <label for="customerName">Name:</label>
+    <input type="text" id="customerName"><br>
+
+    <label for="customerCity">City:</label>
+    <input type="text" id="customerCity"><br>
+
+    <label for="customerAge">Age:</label>
+    <input type="number" id="customerAge"><br>
+
+    <label for="customerEmail">Email:</label>
+    <input type="email" id="customerEmail"><br>
+
+    <label for="customerJoinDate">Join Date:</label>
+    <input type="date" id="customerJoinDate"><br>
+
+    <button onclick="updateCustomer()">Update Customer</button>
+
+    <script>
+        const SERVER = "http://127.0.0.1:5000";
+        
+        // Get customer ID from the URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const customerId = urlParams.get('id'); 
+        
+        // Fetch customer data for the given customer ID
+        axios.get(`${SERVER}/customers/${customerId}`)
+            .then(response => {
+                const customer = response.data;
+        
+                document.getElementById('customerName').value = customer.name;
+                document.getElementById('customerCity').value = customer.city;
+                document.getElementById('customerAge').value = customer.age;
+                document.getElementById('customerEmail').value = customer.email;
+        
+                document.getElementById('customerJoinDate').value = customer.join_date; 
+            })
+            .catch(error => {
+                console.error('Error fetching customer:', error);
+                Toastify({
+                    text: "Could not load the customer details for updating.",
+                    duration: 3000,
+                    close: true,
+                    gravity: "top", 
+                    position: "right", 
+                    style: {
+                        background: "linear-gradient(to right, #ff6a00, #ee0979)" 
+                    },
+                    stopOnFocus: true
+                }).showToast();
+            });
+        
+        // Function to handle the update
+        const updateCustomer = () => {
+            const updatedCustomer = {
+                name: document.getElementById('customerName').value,
+                city: document.getElementById('customerCity').value,
+                age: document.getElementById('customerAge').value,
+                email: document.getElementById('customerEmail').value,
+                join_date: document.getElementById('customerJoinDate').value 
+            };
+        
+            axios.put(`${SERVER}/customers/update/id/${customerId}`, updatedCustomer)
+                .then(() => {
+                    Toastify({
+                        text: "Customer updated successfully.",
+                        duration: 3000,
+                        close: true,
+                        gravity: "top", 
+                        position: "right", 
+                        style: {
+                            background: "linear-gradient(to right, #28a745, #218838)" 
+                        },
+                        stopOnFocus: true
+                    }).showToast();
+                })
+                .catch(error => {
+                    console.error('Error updating customer:', error);
+                    Toastify({
+                        text: "Could not update the customer. Please try again later.",
+                        duration: 3000,
+                        close: true,
+                        gravity: "top", 
+                        position: "right", 
+                        style: {
+                            background: "linear-gradient(to right, #ff6a00, #ee0979)" 
+                        },
+                        stopOnFocus: true
+                    }).showToast();
+                });
+        }
+    </script>
+    
+    
+</body>
+
+</html>
